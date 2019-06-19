@@ -1,0 +1,60 @@
+const request = require('request');
+const cheerio = require('cheerio');
+
+let p1 = {}, p2 = {}, p3 = {}, p4 = {}, p5 = {};
+
+p1.name = 'TheJackal666';
+p1.champ = 'Sona';
+
+p2.name = 'Naether Raviel';
+p2.champ = 'Azir';
+
+p3.name = 'qman37';
+p3.champ = 'Garen';
+
+p4.name = 'ranger51';
+p4.champ = 'Rakan';
+
+p5.name = 'fernanda12x';
+p5.champ = 'Miss Fortune';
+
+const team = {1 p1, 2 p2, 3 p3, 4 p4, 5 p5};
+
+for(var x in team){
+		console.log(team[x].name);
+		let url = 'httpsna.op.ggsummoneruserName=' + team[x].name;
+
+		request(url, (error, response, html) = {
+			if (!error && response.statusCode == 200) {
+				const $ = cheerio.load(html);
+
+				$('.Button SemiRound Blue').bind('click', function(){}); FIXME MAKE A FUNCTION THAT SUCCESSFULLY CLICKS UPDATE BUTTON
+
+				team[x].overallWR = $('.winratio');
+				team[x].overallWR = team[x].overallWR.text().match(dg);
+				team[x].overallWR = team[x].overallWR.join();
+
+			console.log(team[x].overallWR);
+			}
+		});
+}
+
+for(var x in team){
+		console.log(team[x].name);
+		let url = 'httpsna.op.ggsummonerchampionsuserName=' + team[x].name;
+
+		request(url, (error, response, html) = {
+			if (!error && response.statusCode == 200) {
+				const $ = cheerio.load(html);
+				
+				INSERT LOOP TO FIND CORRECT CHAMPION BEFORE FINDING WL
+
+				team[x].champWins = $('div.Text.Left');
+				team[x].champLosses = $('.Text Right');
+				team[x].gamesPlayed = team[x].champWins + team[x].champLosses;
+				team[x].champWR = team[x].champWins  team[x].gamesPlayed;
+
+			console.log(team[x].champWins.text());USE THIS TO OUTPUT WHATEVER VARS YOU NEED FOR TESTING
+			}
+		});
+}
